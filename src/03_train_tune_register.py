@@ -127,9 +127,25 @@ def main():
     api = HfApi()
     api.create_repo(repo_id=HF_MODEL_REPO, repo_type="model", exist_ok=True)
 
-    api.upload_file(model_path, "best_model.joblib", HF_MODEL_REPO, repo_type="model")
-    api.upload_file(f"{REPORT_DIR}/metrics.json", "metrics.json", HF_MODEL_REPO, repo_type="model")
-    api.upload_file(f"{REPORT_DIR}/classification_report.txt", "classification_report.txt", HF_MODEL_REPO, repo_type="model")
+    api.upload_file(
+    path_or_fileobj=model_path,
+    path_in_repo="best_model.joblib",
+    repo_id=HF_MODEL_REPO,
+    repo_type="model",
+)
+    api.upload_file(
+    path_or_fileobj=f"{REPORT_DIR}/metrics.json",
+    path_in_repo="metrics.json",
+    repo_id=HF_MODEL_REPO,
+    repo_type="model",
+)
+    api.upload_file(
+    path_or_fileobj=f"{REPORT_DIR}/classification_report.txt",
+    path_in_repo="classification_report.txt",
+    repo_id=HF_MODEL_REPO,
+    repo_type="model",
+)
+
 
     print("✅ Uploaded model + metrics to HF model repo:", HF_MODEL_REPO)
 
