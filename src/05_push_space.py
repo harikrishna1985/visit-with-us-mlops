@@ -14,7 +14,13 @@ HF_SPACE_REPO = os.environ["HF_SPACE_REPO"]  # e.g. username/visit-with-us-welln
 
 def main():
     api = HfApi()
-    api.create_repo(repo_id=HF_SPACE_REPO, repo_type="space", exist_ok=True)
+    api.create_repo(
+    repo_id=HF_SPACE_REPO,
+    repo_type="space",
+    space_sdk="docker",
+    exist_ok=True
+)
+
 
     api.upload_folder(
         folder_path="space",
