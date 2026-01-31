@@ -62,10 +62,22 @@ def main():
 
     # Upload processed splits back to HF dataset repo
     api = HfApi()
-    api.upload_file(TRAIN_PATH, "data/processed/train.csv", HF_DATASET_REPO, repo_type="dataset")
-    api.upload_file(TEST_PATH,  "data/processed/test.csv",  HF_DATASET_REPO, repo_type="dataset")
+    api.upload_file(
+     path_or_fileobj=TRAIN_PATH,
+     path_in_repo="data/processed/train.csv",
+     repo_id=HF_DATASET_REPO,
+     repo_type="dataset",
+)
 
-    print("✅ Prepared + uploaded train/test splits to:", HF_DATASET_REPO)
+    api.upload_file(
+     path_or_fileobj=TEST_PATH,
+     path_in_repo="data/processed/test.csv",
+     repo_id=HF_DATASET_REPO,
+     repo_type="dataset",
+ )
+
+
+    print("Prepared + uploaded train/test splits to:", HF_DATASET_REPO)
 
 if __name__ == "__main__":
     main()
