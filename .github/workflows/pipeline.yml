@@ -1,0 +1,6 @@
+name: mlops-pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
